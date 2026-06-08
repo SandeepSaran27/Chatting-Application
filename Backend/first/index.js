@@ -99,6 +99,6 @@ app.get("/", (req, res) => { console.log("Server connected") });
 app.use("/msg", msgRouter);
 app.use("/user", userRouter);
 
-server.listen(process.env.port, () => {
+server.listen(process.env.PORT, '0.0.0.0', () => {
     console.log("Server connected at 8000");
 })
