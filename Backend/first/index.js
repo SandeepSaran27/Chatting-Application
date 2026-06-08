@@ -3,6 +3,7 @@ const { Server } = require("socket.io");
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const MSG = require("../model/msgModel.js");
@@ -35,6 +36,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
+app.use(cookieParser());
 
 io.on('connection', (socket) => {
     console.log("A new user connected:", socket.id);
