@@ -35,8 +35,8 @@ app.use(cors({
     origin: allowedOrigins,
     credentials: true
 }));
-app.use(express.json());
 app.use(cookieParser());
+app.use(express.json());
 
 io.on('connection', (socket) => {
     console.log("A new user connected:", socket.id);
