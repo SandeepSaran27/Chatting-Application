@@ -1,5 +1,5 @@
 const User = require("../model/userModel.js");
-const { userRouter } = require("../routes/userRoutes.js");
+//const { userRouter } = require("../routes/userRoutes.js");
 const { setUser, getUser } = require("../services/auth.js");
 const { getChatId } = require("../services/chatServices.js");
 const MSG = require("../model/msgModel.js");
