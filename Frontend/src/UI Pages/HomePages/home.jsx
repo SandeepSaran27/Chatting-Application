@@ -36,8 +36,9 @@ function HomePage() {
 
     useEffect(() => {
         async function getUserData() {
-            const UID = document.cookie.slice(4);
-            const res = await fetch(`${BACKEND_SERVER_URL}user/getUserData?token=${UID}`);
+            const res = await fetch(`${BACKEND_SERVER_URL}user/getUserData`, {
+                            credentials: "include"
+                        });
             const resData = await res.json();
             console.log("userData", resData.data);
             setUserData(resData.data);
