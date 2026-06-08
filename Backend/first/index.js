@@ -95,7 +95,9 @@ io.on('connection', (socket) => {
     });
 });
 
-app.get("/", (req, res) => { return res.json({msg : "Server says hii" });
+app.get("/", (req, res) => { 
+    return res.json({msg : "Server says hii" }) 
+};
 app.use("/msg", msgRouter);
 app.use("/user", userRouter);
 
