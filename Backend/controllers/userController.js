@@ -121,7 +121,7 @@ async function connectionReqHandling(req, res) {
 }
 
 async function getUserData(req, res) {
-    const token = req.query.token;
+     const token = req.cookies.uid;
     console.log("token ", token );
     const tokenData = getUser(token);
     console.log("tokenData ", tokenData );
