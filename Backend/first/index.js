@@ -95,10 +95,10 @@ io.on('connection', (socket) => {
     });
 });
 
-app.get("/", (req, res) => { console.log("Server connected") });
+app.get("/", (req, res) => { return res.json({msg : "Server says hii" });
 app.use("/msg", msgRouter);
 app.use("/user", userRouter);
 
 server.listen(process.env.PORT, '0.0.0.0', () => {
-    console.log("Server connected at 8000");
+    console.log("Server connected");
 })
