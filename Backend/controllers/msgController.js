@@ -87,8 +87,10 @@ async function getAllNotifications(req, res) {
 
 async function getAllLastMessages(req, res) {
     try {
-        const data = req.body;
-        const userId = getUser(data.userIdToken).userName;
+        const token = req.cookies.uid;
+        console.log("req.cookies", req.cookies);
+        console.log("token", token);
+        const userId = getUser(token).userName;
         console.log("getAllLastMessages userID", userId)
         const user = await User.findOne({ userName: userId });
         if (!user) {
