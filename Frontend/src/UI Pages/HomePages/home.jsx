@@ -19,12 +19,11 @@ function HomePage() {
                 `${BACKEND_SERVER_URL}msg/getLastMessages`,
                 {
                     method: "POST",
+                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({
-                        userIdToken: document.cookie.slice(4),
-                    }),
+                    
                 }
             );
 
