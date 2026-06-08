@@ -20,11 +20,11 @@ function ChattingSpace() {
                 `${BACKEND_SERVER_URL}msg/removeNewMsgNotificationStatus`,
                 {
                     method: "POST",
+                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        userIdToken: document.cookie.slice(4),
                         from: receiver,
                     }),
                 }
@@ -38,11 +38,11 @@ function ChattingSpace() {
 
     useEffect(() => {
         async function getChatsData() {
-            const UID = document.cookie.slice(4);
             const res = await fetch(
-                `${BACKEND_SERVER_URL}msg/getChat?token=${UID}`,
+                `${BACKEND_SERVER_URL}msg/getChat`,
                 {
                     method: "POST",
+                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
                     },
@@ -67,8 +67,17 @@ function ChattingSpace() {
         };
     }, [chatsData]);
 
-    function sendMsg() {
-        const userID = document.cookie.slice(4);
+    async function sendMsg() {
+        //const userID = document.cookie.slice(4);
+         const res = await fetch(
+                `${BACKEND_SERVER_URL}user/getUserData`,
+                {
+                    credentials: "include",
+                }
+            );
+        const data = await res.data;
+        console.log("Data object at send msg" data);
+        const userId = data.user_id;
         socket.emit("sendmessage", {
             senderToken: userID,
             receiverId: receiver,
