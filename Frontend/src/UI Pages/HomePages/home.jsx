@@ -68,11 +68,6 @@ function HomePage() {
 
             const data = await response.json();
             console.log("newMsgFrom", data.new_msg_from);
-
-            /*setnewMsgFrom((prev) => [
-                ...prev,
-                data.new_msg_from
-            ]);*/
             console.log("newMsgFrom", data.new_msg_from);
             setnewMsgFrom(data.new_msg_from);
         }
@@ -109,8 +104,8 @@ function HomePage() {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                credentials: "include",
                 body: JSON.stringify({
-                    userIdToken: document.cookie.slice(4),
                     from: person,
                 }),
             }
