@@ -23,7 +23,6 @@ function HomePage() {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    
                 }
             );
 
@@ -60,12 +59,10 @@ function HomePage() {
                 `${BACKEND_SERVER_URL}msg/getNotifications`,
                 {
                     method: "POST",
+                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({
-                        userIdToken: document.cookie.slice(4),
-                    }),
                 }
             );
 
