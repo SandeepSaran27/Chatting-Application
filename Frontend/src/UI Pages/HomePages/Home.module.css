@@ -1,0 +1,228 @@
+:root {
+    --evergreen: #132a13ff;
+    --hunter-green: #31572cff;
+    --fern: #4f772dff;
+    --palm-leaf: #90a955ff;
+    --lime-cream: #ecf39eff;
+    --dark-walnut: #582f0e;
+    --saddle-brown: #7f4f24;
+    --toffee-brown: #936639;
+    --camel: #a68a64;
+    --khaki-beige: #b6ad90;
+    --dry-sage: #c2c5aa;
+    --dry-sage-2: #a4ac86;
+    --dusty-olive: #656d4a;
+    --ebony: #414833;
+    --charcoal-brown: #333d29;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.pageWrapper {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--lime-cream);
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.topHeader {
+    font-size: 0.85rem;
+    color: var(--hunter-green);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.mainHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.userAvatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--fern);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--evergreen);
+}
+
+.addFriendBtn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--hunter-green);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.addFriendBtn:hover {
+    background: var(--fern);
+    transform: scale(1.08);
+}
+
+.searchBar {
+    width: 100%;
+    padding: 14px 22px;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background: white;
+    color: var(--evergreen);
+    margin-bottom: 25px;
+    transition: all 0.25s ease;
+}
+
+.searchBar:focus {
+    box-shadow: 0 0 0 3px rgba(79, 119, 45, 0.25);
+}
+
+.friendList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.friendItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border-radius: 18px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.75);
+    transition: all 0.25s ease;
+}
+
+.friendItem:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(19, 42, 19, 0.08);
+}
+
+.friendAvatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--palm-leaf);
+    color: var(--evergreen);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.textContainer {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.friendName {
+    font-size: 1.05rem;
+    color: var(--evergreen);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nameUnread {
+    font-weight: 800;
+}
+
+.nameRead {
+    font-weight: 600;
+}
+
+.messageText {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.msgUnread {
+    color: var(--fern);
+    font-weight: 700;
+}
+
+.msgRead {
+    color: var(--hunter-green);
+    opacity: 0.8;
+}
+
+.unreadDot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--fern);
+    flex-shrink: 0;
+}
+
+.floatingNewPeopleBtn {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    background:var(--hunter-green);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+    transition: all 0.25s ease;
+    z-index: 999;
+}
+
+.floatingNewPeopleBtn:hover {
+    background: var(--fern);
+    transform: scale(1.08);
+}
+
+.floatingNewPeopleBtn:active {
+    transform: scale(0.95);
+}
