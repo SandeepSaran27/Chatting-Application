@@ -76,7 +76,7 @@ function ChattingSpace() {
                 }
             );
         const data = await res.data;
-        console.log("Data object at send msg" data);
+        console.log("Data object at send msg", data);
         const userId = data.user_id;
         socket.emit("sendmessage", {
             senderToken: userID,
