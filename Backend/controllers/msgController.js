@@ -70,8 +70,8 @@ async function removeNewNotification(req, res) {
 
 async function getAllNotifications(req, res) {
     try {
-        const data = req.body;
-        const userId = getUser(data.userIdToken).userName;
+        const token = req.cookies.uid;
+        const userId = getUser(token).userName;
         console.log("userId in nfy:", userId);
         const user = await msgNfy.findOne({ user_id: userId });
         if (!user) {
