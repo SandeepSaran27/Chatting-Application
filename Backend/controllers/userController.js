@@ -122,7 +122,9 @@ async function connectionReqHandling(req, res) {
 
 async function getUserData(req, res) {
     const token = req.query.token;
+    console.log("token ", token );
     const tokenData = getUser(token);
+    console.log("tokenData ", tokenData );
     const data = await User.findOne({ userName: tokenData.userName });
     if (data) {
         return res.json({ "data": data });
