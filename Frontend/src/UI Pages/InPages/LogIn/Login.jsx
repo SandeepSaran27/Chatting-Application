@@ -8,7 +8,7 @@ import style from './Login.module.css';
 const BACKEND_SERVER_URL = import.meta.env.VITE_BACKEND_SERVER_URL;
 
 function LogIn() {
-
+    console.log("BACKEND_SERVER_URL", BACKEND_SERVER_URL );
     const [userName, setUserName] = useState('');
     const [passWord, setpassWord] = useState('');
     const [status, setStatus] = useState(400);
