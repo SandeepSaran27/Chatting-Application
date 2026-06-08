@@ -19,7 +19,7 @@ const app = express();
 const server = http.createServer(app);
 const allowedOrigins = process.env.FRONTEND_WEBSITE_URL.split(",").map(origin => origin.trim());
 
-console.log("Origins:", allowedOrigins);
+//console.log("Origins:", allowedOrigins);
 
 const io = new Server(server, {
     cors: {
