@@ -6,7 +6,7 @@ const User = require("../model/userModel.js");
 
 async function getChatof(req, res) {
     const receiverId = req.body.receiverId;
-    const token = req.query.token;
+    const token = req.cookies.uid;
     const userName = getUser(token).userName;
     const chatId = getChatId(userName, receiverId);
     const data = await MSG.findOne({ chat_id: chatId });
