@@ -38,8 +38,9 @@ async function addNewNotification(senderId, receiverId) {
 }
 
 async function removeNewNotification(req, res) {
+    const token = req.cookies.uid;
     const data = req.body;
-    const userId = getUser(data.userIdToken).userName;
+    const userId = getUser(token).userName;
     console.log("userId in removing notification", userId);
     const fromId = data.from;
     try {
