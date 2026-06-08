@@ -18,10 +18,10 @@ async function handleUserLogIn(req, res) {
         return res.status(400).json({ msg: 'token not generated @controler' });
     }
     res.cookie("uid", token, {
-        httpOnly: false,
-        secure: false,
-        sameSite: 'lax',
-    });
+    httpOnly: true,
+    secure: true,
+    sameSite: "none"
+});
     return res.status(200).json({
         msg: 'login completed',
         userData: userData,
