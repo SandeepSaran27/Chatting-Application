@@ -121,6 +121,7 @@ async function connectionReqHandling(req, res) {
 }
 
 async function getUserData(req, res) {
+    try{
      const token = req.cookies.uid;
     console.log("token ", token );
     const tokenData = getUser(token);
@@ -130,6 +131,10 @@ async function getUserData(req, res) {
         return res.json({ "data": data });
     } else {
         console.log("Error@121");
+        return res.json(msg : "User data not found");
+    }
+    }catch(err){
+        return res.json(msg : "Error in getUser");
     }
 }
 
