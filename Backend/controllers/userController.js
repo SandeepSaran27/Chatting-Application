@@ -138,6 +138,22 @@ async function getUserData(req, res) {
     }
 }
 
+async function getUserDataWithTheirUserId(req, res) {
+    try{
+    const tokenData = getUser(token);
+    console.log("tokenData ", tokenData );
+    const data = await User.findOne({ userName: tokenData.userName });
+    if (data) {
+        return res.json({ "data": data });
+    } else {
+        console.log("Error@121");
+        return res.json({ msg: "User data not found" });
+    }
+    }catch(err){
+        return res.json({ msg: "Error in getUser" });
+    }
+}
+
 async function getAllUsers(req, res) {
     const data = await User.find({});
     const userNames = data.map(user => user.userName);
