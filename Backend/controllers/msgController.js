@@ -38,12 +38,13 @@ async function addNewNotification(senderId, receiverId) {
 }
 
 async function removeNewNotification(req, res) {
+    try {
     const token = req.cookies.uid;
     const data = req.body;
     const userId = getUser(token).userName;
     console.log("userId in removing notification", userId);
     const fromId = data.from;
-    try {
+    
         const user = await msgNfy.findOne({ user_id: userId });
         if (user) {
             if (user.new_msg_from.includes(fromId)) {
