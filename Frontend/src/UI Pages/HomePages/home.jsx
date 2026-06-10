@@ -80,8 +80,18 @@ function HomePage() {
     }, []);
 
     useEffect(() => {
-        const userIdToken = document.cookie.slice(4);
-        socket.emit("updateOnlineStatus", userIdToken);
+        async function updateOS(){
+             const res = await fetch(
+                `${BACKEND_SERVER_URL}user/getUserData`,
+                {
+                    credentials: "include",
+                }
+            );
+        const data = await res.json();
+        const userId = data.data.userName;
+        socket.emit("updateOnlineStatus", userId);   
+        }        
+        updateOS()
         socket.on("receivemessage", async (msg) => {
             console.log("msg", msg);
             const lastMessage = msg.chatData[msg.chatData.length - 1];
