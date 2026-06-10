@@ -63,7 +63,8 @@ async function handleUserSignUp(req, res) {
 
 async function connectionReqHandling(req, res) {
     const data = req.body;
-    const { usertoken, receiver } = data;
+    const { receiver } = data;
+    const usertoken = req.cookies.uid;
     const userData = getUser(usertoken);
     const userId = userData.userName;
 
