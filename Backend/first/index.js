@@ -91,7 +91,7 @@ io.on('connection', (socket) => {
         }
         }catch(err){
             console.log("Error at sendMsg:", err);
-            return res.json({msg : "Error in sendMsg"});
+            //return res.json({msg : "Error in sendMsg"});
         }
     });
 
