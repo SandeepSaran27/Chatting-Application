@@ -75,7 +75,7 @@ function ChattingSpace() {
                     credentials: "include",
                 }
             );
-        const data = await res.data;
+        const data = await res.json();
         console.log("Data object at send msg", data);
         const userId = data.user_id;
         socket.emit("sendmessage", {
