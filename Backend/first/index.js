@@ -41,9 +41,8 @@ app.use(express.json());
 io.on('connection', (socket) => {
     console.log("A new user connected:", socket.id);
     let userIdGolbal;
-    socket.on("updateOnlineStatus", (userIdToken) => {
+    socket.on("updateOnlineStatus", (userId) => {
         try {
-            userId = getUser(userIdToken).userName;
             userIdGolbal = userId;
             onlineUsers.set(userId, socket.id);
             console.log("onlineUsers", onlineUsers);
