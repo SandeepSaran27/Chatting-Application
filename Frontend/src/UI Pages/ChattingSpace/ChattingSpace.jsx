@@ -81,7 +81,7 @@ function ChattingSpace() {
         console.log("data.data.userName", data.data.userName);
         const userId = data.data.userName;
         socket.emit("sendmessage", {
-            senderToken: userId,
+            userId: userId,
             receiverId: receiver,
             msg: message,
         });
