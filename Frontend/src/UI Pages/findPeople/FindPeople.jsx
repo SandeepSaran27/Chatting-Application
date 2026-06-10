@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import socket from "../OtherPages/socketConnection.jsx";
+//import socket from "../OtherPages/socketConnection.jsx";
 import style from "./FindPeople.module.css";
 
 const BACKEND_SERVER_URL = import.meta.env.VITE_BACKEND_SERVER_URL;
