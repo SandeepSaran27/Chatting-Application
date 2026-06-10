@@ -53,6 +53,7 @@ io.on('connection', (socket) => {
     })
 
     socket.on("sendmessage", async (data) => {
+        try{
         const { senderToken, receiverId, msg } = data;
         const senderId = getUser(senderToken).userName;
         const senderSocketId = onlineUsers.get(senderId);
@@ -87,6 +88,10 @@ io.on('connection', (socket) => {
         io.to(senderSocketId).emit("receivemessage", msgResponse);
         if (receiverSocketId) {
             io.to(receiverSocketId).emit("receivemessage", msgResponse);
+        }
+        }catch(err){
+            console.log("Error at sendMsg:", err);
+            return res.json({msg : "Error in sendMsg"});
         }
     });
 
