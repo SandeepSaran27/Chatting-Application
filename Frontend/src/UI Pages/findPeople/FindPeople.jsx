@@ -19,7 +19,7 @@ function NewPeoplePage() {
                 }
             );
         const resData = await res.json();
-        console.log("Data object at send msg", data);
+        console.log("Data object at send msg", resData.data);
             console.log("userData", resData.data);
             setUserData(resData.data);
         }
@@ -40,11 +40,11 @@ function NewPeoplePage() {
             `${BACKEND_SERVER_URL}user/connect`,
             {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                },
+                },                
                 body: JSON.stringify({
-                    usertoken: document.cookie.slice(4),
                     receiver: receiver,
                 }),
             }
