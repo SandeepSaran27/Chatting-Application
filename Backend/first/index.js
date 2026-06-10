@@ -54,8 +54,8 @@ io.on('connection', (socket) => {
 
     socket.on("sendmessage", async (data) => {
         try{
-        const { senderToken, receiverId, msg } = data;
-        const senderId = getUser(senderToken).userName;
+        const { userId, receiverId, msg } = data;
+        const senderId = userId
         const senderSocketId = onlineUsers.get(senderId);
         const receiverSocketId = onlineUsers.get(receiverId);
         const chatId = getChatId(senderId, receiverId);
@@ -84,7 +84,8 @@ io.on('connection', (socket) => {
 
         await addNewNotification(senderId, receiverId);       
 
-        io.to(receiverId).emit("updatenotification");
+        //io.to(receiverId).emit("updatenotification");
+        io.to(receiverSocketId).emit("updatenotification");
         io.to(senderSocketId).emit("receivemessage", msgResponse);
         if (receiverSocketId) {
             io.to(receiverSocketId).emit("receivemessage", msgResponse);
