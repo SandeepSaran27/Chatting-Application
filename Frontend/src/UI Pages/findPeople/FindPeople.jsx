@@ -12,9 +12,14 @@ function NewPeoplePage() {
 
     useEffect(() => {
         async function getUserData() {
-            const UID = document.cookie.slice(4);
-            const res = await fetch(`${BACKEND_SERVER_URL}user/getUserData?token=${UID}`);
-            const resData = await res.json();
+            const res = await fetch(
+                `${BACKEND_SERVER_URL}user/getUserData`,
+                {
+                    credentials: "include",
+                }
+            );
+        const resData = await res.json();
+        console.log("Data object at send msg", data);
             console.log("userData", resData.data);
             setUserData(resData.data);
         }
