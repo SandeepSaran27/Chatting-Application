@@ -12,138 +12,160 @@
     box-sizing: border-box;
 }
 
-/* Base App Wrapper Container */
-.chatContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    
-    /* Fallback framework for legacy platforms */
-    height: 100vh;
-    /* Lock structural window framework safe against dynamic address bars */
-    height: 100svh; 
-    
-    background-color: #1a1a1a;
-    font-family: 'Inter', -apple-system, sans-serif;
-    
-    /* Lock container perspective context completely in place */
-    overflow: hidden; 
-    position: relative;
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-/* Header Navbar Layout Configuration */
+.chatContainer {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* =======================
+   TOP NAVBAR
+======================= */
+
 .topNav {
+    flex-shrink: 0;
+    height: 65px;
+
     display: flex;
     align-items: center;
-    justify-content: space-between; 
-    background-color: var(--evergreen);
+    justify-content: space-between;
+
     padding: 10px 16px;
-    height: 65px;
+
+    background-color: var(--evergreen);
+
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    
-    /* CRITICAL: Prevents the header from compressing */
-    flex-shrink: 0; 
+    z-index: 100;
 }
 
 .navLeft {
     display: flex;
     align-items: center;
     gap: 12px;
-    min-width: 0; 
+    min-width: 0;
 }
 
 .backBtn {
     background: transparent;
     border: none;
-    outline: none;
     color: var(--lime-cream);
     cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 4px;
     border-radius: 50%;
-    transition: background-color 0.2s ease;
+
+    transition: 0.2s;
 }
 
 .backBtn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .friendAvatar {
     width: 40px;
     height: 40px;
+
     border-radius: 50%;
-    background-color: var(--palm-leaf);
+
+    background: var(--palm-leaf);
     color: var(--evergreen);
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     font-weight: 700;
-    font-size: 1.15rem;
-    flex-shrink: 0;
+    font-size: 1.1rem;
 }
 
 .metaData {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     min-width: 0;
 }
 
 .friendName {
-    font-size: 1.05rem;
+    color: white;
+    font-size: 1rem;
     font-weight: 700;
-    color: #ffffff;
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .descriptionText {
-    font-size: 0.8rem;
     color: var(--lime-cream);
     opacity: 0.85;
+    font-size: 0.8rem;
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Vertical Options Menu Button Style */
 .menuBtn {
     background: transparent;
     border: none;
-    outline: none;
     color: var(--lime-cream);
+
     cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     padding: 6px;
     border-radius: 50%;
-    transition: background-color 0.2s ease;
+
+    transition: 0.2s;
 }
 
 .menuBtn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
-/* Mid Message Grid Feed Layer Area */
+/* =======================
+   MESSAGE AREA
+======================= */
+
 .messageFeed {
     flex: 1;
+    min-height: 0;
+
     overflow-y: auto;
-    padding: 20px;
+
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background: radial-gradient(circle, rgba(49,87,44,0.15) 0%, rgba(26,26,26,1) 100%);
-    
-    /* Smooth elastic touch velocity response parameters for iOS environments */
-    -webkit-overflow-scrolling: touch; 
-    
-    scrollbar-width: none; 
-    -ms-overflow-style: none; 
+
+    padding: 20px;
+
+    background: radial-gradient(
+        circle,
+        rgba(49, 87, 44, 0.15) 0%,
+        rgba(26, 26, 26, 1) 100%
+    );
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .messageFeed::-webkit-scrollbar {
@@ -151,79 +173,134 @@
 }
 
 .messageRow {
-    display: flex;
     width: 100%;
+    display: flex;
+}
+
+.messageRow.left {
+    justify-content: flex-start;
+}
+
+.messageRow.right {
+    justify-content: flex-end;
 }
 
 .bubble {
-    max-width: 65%;
+    max-width: 70%;
+
     padding: 10px 14px;
+
     font-size: 0.95rem;
     line-height: 1.4;
-    margin: 0;
+
     word-break: break-word;
+
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .incoming {
-    background-color: #ffffff;
+    background: white;
     color: var(--evergreen);
-    border-radius: 0px 16px 16px 16px;
+
+    border-radius: 0 16px 16px 16px;
 }
 
 .outgoing {
-    background-color: var(--hunter-green);
+    background: var(--hunter-green);
     color: var(--lime-cream);
-    border-radius: 16px 0px 16px 16px;
+
+    border-radius: 16px 0 16px 16px;
 }
 
-/* Lower message entry point input controls layout wrapper row */
+/* =======================
+   INPUT BAR
+======================= */
+
 .inputBar {
+    flex-shrink: 0;
+
     display: flex;
     align-items: center;
-    padding: 12px 16px;
-    background-color: #141414;
     gap: 12px;
-    
-    /* CRITICAL: Prevents the input container bar from compressing */
-    flex-shrink: 0; 
+
+    padding: 12px 16px;
+
+    background: #141414;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .messageInput {
     flex: 1;
-    background-color: #262626;
+
+    background: #262626;
+    color: white;
+
     border: 1px solid transparent;
-    padding: 12px 20px;
     border-radius: 24px;
-    color: #ffffff;
+
+    padding: 12px 20px;
+
     font-size: 0.95rem;
+
     outline: none;
-    transition: all 0.2s ease;
+
+    transition: 0.2s;
 }
 
 .messageInput:focus {
     border-color: var(--fern);
-    background-color: #2d2d2d;
+    background: #2d2d2d;
 }
 
 .sendBtn {
     width: 44px;
     height: 44px;
-    border-radius: 50%;
-    background-color: var(--fern);
-    color: var(--lime-cream);
+
     border: none;
-    outline: none;
+    border-radius: 50%;
+
+    background: var(--fern);
+    color: var(--lime-cream);
+
     cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
+
+    transition: 0.2s;
 }
 
 .sendBtn:hover {
-    background-color: var(--palm-leaf);
+    background: var(--palm-leaf);
     color: var(--evergreen);
-    transform: scale(1.05);
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width: 768px) {
+    .topNav {
+        height: 60px;
+        padding: 8px 12px;
+    }
+
+    .friendAvatar {
+        width: 36px;
+        height: 36px;
+    }
+
+    .bubble {
+        max-width: 85%;
+    }
+
+    .inputBar {
+        padding: 10px 12px;
+    }
+
+    .messageInput {
+        padding: 10px 16px;
+    }
 }
