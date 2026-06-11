@@ -11,21 +11,33 @@ function NewPeoplePage() {
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        async function getUserData() {
+    async function getUserData() {
+        try {
             const res = await fetch(
                 `${BACKEND_SERVER_URL}user/getUserData`,
                 {
                     credentials: "include",
                 }
             );
-        console.log("Res", res);
-        const resData = await res.json();
-        console.log("Data object at send msg", resData.data);
-        console.log("userData", resData.data);
-        setUserData(resData.data);
+
+            console.log("Status:", res.status);
+
+            const resData = await res.json();
+
+            console.log("Full response:", resData);
+
+            setUserData(resData.data); // or setUserData(resData)
+        } catch (err) {
+            console.error(err);
         }
-        getUserData();
-    }, []);
+    }
+
+    getUserData();
+}, []);
+
+useEffect(() => {
+    console.log("Updated userData:", userData);
+}, [userData]);
 
     useEffect(() => {
         async function getNewPeopleData() {
