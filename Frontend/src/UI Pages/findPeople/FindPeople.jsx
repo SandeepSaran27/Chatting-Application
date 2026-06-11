@@ -18,10 +18,11 @@ function NewPeoplePage() {
                     credentials: "include",
                 }
             );
+        console.log("Res", res);
         const resData = await res.json();
         console.log("Data object at send msg", resData.data);
-            console.log("userData", resData.data);
-            setUserData(resData.data);
+        console.log("userData", resData.data);
+        setUserData(resData.data);
         }
         getUserData();
     }, []);
@@ -36,6 +37,7 @@ function NewPeoplePage() {
     }, []);
 
     async function connectUsers(receiver) {
+        console.log("User data:", userData);
         const response = await fetch(
             `${BACKEND_SERVER_URL}user/connect`,
             {
