@@ -8,7 +8,7 @@ const BACKEND_SERVER_URL = import.meta.env.VITE_BACKEND_SERVER_URL;
 function NewPeoplePage() {
 
     const [newPeople, setNewPeople] = useState([]);
-    const [userData, setUserData] = useState([]);
+    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
         async function getUserData() {
