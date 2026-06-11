@@ -12,28 +12,32 @@
     box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--lime-cream);
+    font-family: 'Inter', sans-serif;
+}
+
 .pageWrapper {
+    width: 100%;
     min-height: 100vh;
-    width: 100vw;
+
     background: var(--lime-cream);
 
     display: flex;
-    justify-content:left;
     flex-direction: column;
 
     padding: 24px 16px;
 
-    font-family: 'Inter', sans-serif;
+    overflow-y: auto;
 }
-
-.contentContainer {
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* =========================
-   HEADER
-========================= */
 
 .mainHeader {
     display: flex;
@@ -57,14 +61,13 @@
     border-radius: 16px;
 
     display: flex;
-    justify-content: center;
     align-items: center;
-
-    text-decoration: none;
+    justify-content: center;
 
     color: white;
+    text-decoration: none;
 
-    transition: all 0.25s ease;
+    transition: 0.25s;
 }
 
 .homeButton {
@@ -75,20 +78,11 @@
     background: var(--hunter-green);
 }
 
-.homeButton:hover,
-.viewFriendsButton:hover {
-    transform: translateY(-2px);
-}
-
 .title {
-    font-size: 2.2rem;
-    font-weight: 800;
     color: var(--evergreen);
+    font-size: 2rem;
+    font-weight: 800;
 }
-
-/* =========================
-   HERO
-========================= */
 
 .heroSection {
     background: linear-gradient(
@@ -97,115 +91,67 @@
         var(--hunter-green)
     );
 
-    border-radius: 30px;
+    border-radius: 24px;
 
-    padding: 32px;
+    padding: 30px;
+
+    color: white;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     margin-bottom: 24px;
-
-    color: white;
-
-    position: relative;
-    overflow: hidden;
-}
-
-.heroSection::after {
-    content: "";
-
-    position: absolute;
-
-    width: 250px;
-    height: 250px;
-
-    right: -100px;
-    top: -100px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.heroContent {
-    z-index: 2;
 }
 
 .heroTitle {
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: 800;
-    margin-bottom: 10px;
+
+    margin-bottom: 8px;
 }
 
 .heroText {
-    max-width: 420px;
-
-    line-height: 1.7;
-
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 .heroBadge {
-    width: 95px;
-    height: 95px;
+    width: 80px;
+    height: 80px;
 
-    border-radius: 24px;
+    border-radius: 20px;
 
-    background: rgba(255, 255, 255, 0.15);
-
-    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.15);
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 
-    font-size: 1.8rem;
-    font-weight: 800;
-
-    z-index: 2;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
-
-.heroBadge span {
-    font-size: 0.8rem;
-}
-
-/* =========================
-   SEARCH
-========================= */
 
 .searchBox {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
 }
 
 .searchInput {
     width: 100%;
 
+    padding: 16px 20px;
+
     border: none;
     outline: none;
 
-    padding: 18px 22px;
-
-    border-radius: 20px;
+    border-radius: 18px;
 
     background: white;
 
-    color: var(--evergreen);
-
     font-size: 1rem;
 
-    box-shadow: 0 10px 30px rgba(19, 42, 19, 0.08);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
-
-.searchInput::placeholder {
-    color: var(--fern);
-}
-
-/* =========================
-   GRID
-========================= */
 
 .peopleGrid {
     display: grid;
@@ -214,68 +160,44 @@
         repeat(auto-fill, minmax(250px, 1fr));
 
     gap: 24px;
-}
 
-/* =========================
-   CARD
-========================= */
+    width: 100%;
+}
 
 .personCard {
     background: white;
 
-    border-radius: 26px;
+    border-radius: 24px;
 
-    padding: 28px 22px;
+    padding: 24px;
 
     text-align: center;
 
-    box-shadow: 0 15px 35px rgba(19, 42, 19, 0.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 
-    transition: all 0.3s ease;
-
-    position: relative;
-
-    overflow: hidden;
-}
-
-.personCard::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 5px;
-
-    background: linear-gradient(
-        90deg,
-        var(--hunter-green),
-        var(--palm-leaf)
-    );
+    transition: 0.25s;
 }
 
 .personCard:hover {
-    transform: translateY(-8px);
-
-    box-shadow: 0 20px 45px rgba(19, 42, 19, 0.15);
+    transform: translateY(-4px);
 }
 
 .cardTop {
     display: flex;
     justify-content: center;
 
-    position: relative;
-
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .avatar {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
 
     border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background: linear-gradient(
         135deg,
@@ -283,37 +205,16 @@
         var(--fern)
     );
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     color: white;
 
     font-size: 2rem;
-    font-weight: 800;
-}
-
-.onlineDot {
-    display: none;
-    position: absolute;
-
-    bottom: 4px;
-    right: calc(50% - 48px);
-
-    width: 16px;
-    height: 16px;
-
-    border-radius: 50%;
-
-    background: var(--palm-leaf);
-
-    border: 3px solid white;
+    font-weight: 700;
 }
 
 .personName {
     color: var(--evergreen);
 
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
 
     margin-bottom: 8px;
@@ -322,14 +223,8 @@
 .personTag {
     color: var(--fern);
 
-    font-size: 0.9rem;
-
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
-
-/* =========================
-   BUTTON
-========================= */
 
 .connectBtn {
     width: 100%;
@@ -337,41 +232,32 @@
     padding: 14px;
 
     border: none;
-    outline: none;
-
-    border-radius: 16px;
+    border-radius: 14px;
 
     background: var(--hunter-green);
 
     color: white;
 
-    font-weight: 700;
-
     cursor: pointer;
 
-    transition: all 0.25s ease;
+    font-weight: 700;
 }
 
 .connectBtn:hover {
     background: var(--fern);
 }
 
-/* =========================
-   TABLET
-========================= */
-
 @media (max-width: 768px) {
 
-    .title {
-        font-size: 1.8rem;
-    }
-
     .heroSection {
-        padding: 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
     }
 
-    .heroTitle {
-        font-size: 2rem;
+    .heroBadge {
+        width: 70px;
+        height: 70px;
     }
 
     .peopleGrid {
@@ -380,22 +266,27 @@
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 480px) {
 
     .pageWrapper {
         padding: 16px;
     }
 
-    .mainHeader {
-        margin-bottom: 18px;
+    .title {
+        font-size: 1.5rem;
     }
 
-    .title {
-        font-size: 1.6rem;
+    .heroTitle {
+        font-size: 1.4rem;
+    }
+
+    .peopleGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .avatar {
+        width: 70px;
+        height: 70px;
     }
 
     .homeButton,
@@ -403,175 +294,4 @@
         width: 42px;
         height: 42px;
     }
-
-    .heroSection {
-        padding: 18px;
-        border-radius: 22px;
-
-        gap: 15px;
-    }
-
-    .heroTitle {
-        font-size: 1.5rem;
-        margin-bottom: 4px;
-    }
-
-    .heroText {
-        font-size: 0.85rem;
-        line-height: 1.5;
-    }
-
-    .heroBadge {
-        width: 60px;
-        height: 60px;
-
-        border-radius: 18px;
-
-        font-size: 1.2rem;
-
-        flex-shrink: 0;
-    }
-
-    .heroBadge span {
-        display: none;
-    }
-
-    .searchInput {
-        padding: 15px 18px;
-        border-radius: 16px;
-    }
-
-    .peopleGrid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .personCard {
-        padding: 22px 18px;
-    }
-
-    .avatar {
-        width: 75px;
-        height: 75px;
-
-        font-size: 1.7rem;
-    }
-
-    .onlineDot {
-        display: none;
-        width: 14px;
-        height: 14px;
-
-        right: calc(50% - 42px);
-    }
 }
-
-/*:root {
-    --evergreen: #132a13ff;
-    --hunter-green: #31572cff;
-    --fern: #4f772dff;
-    --palm-leaf: #90a955ff;
-    --lime-cream: #ecf39eff;
-}
-
-.pageWrapper {
-    width: 100vw;
-    min-height: 100vh;
-    background: var(--lime-cream);
-    padding: 24px;
-    font-family: 'Inter', sans-serif;
-}
-
-.header {
-    margin-bottom: 30px;
-}
-
-.title {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--evergreen);
-    margin-bottom: 6px;
-}
-
-.subtitle {
-    color: var(--hunter-green);
-    font-size: 0.95rem;
-}
-
-.peopleList {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.personCard {
-    background: rgba(255,255,255,0.55);
-    border-radius: 20px;
-    padding: 16px 20px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    transition: all 0.25s ease;
-}
-
-.personCard:hover {
-    background: rgba(255,255,255,0.85);
-    transform: translateY(-2px);
-}
-
-.personInfo {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-
-    background: var(--palm-leaf);
-    color: var(--evergreen);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-
-.personName {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--evergreen);
-    margin-bottom: 4px;
-}
-
-.personStatus {
-    color: var(--hunter-green);
-    font-size: 0.9rem;
-}
-
-.connectBtn {
-    border: none;
-    outline: none;
-
-    background: var(--hunter-green);
-    color: white;
-
-    padding: 10px 18px;
-    border-radius: 12px;
-
-    cursor: pointer;
-    font-weight: 600;
-
-    transition: all 0.25s ease;
-}
-
-.connectBtn:hover {
-    background: var(--fern);
-    transform: scale(1.05);
-}*/
