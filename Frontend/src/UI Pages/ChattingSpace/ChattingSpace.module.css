@@ -12,32 +12,45 @@
     box-sizing: border-box;
 }
 
+/* Base App Wrapper Container */
 .chatContainer {
     display: flex;
     flex-direction: column;
     width: 100vw;
+    
+    /* Fallback framework for legacy platforms */
     height: 100vh;
+    /* Lock structural window framework safe against dynamic address bars */
+    height: 100svh; 
+    
     background-color: #1a1a1a;
     font-family: 'Inter', -apple-system, sans-serif;
+    
+    /* Lock container perspective context completely in place */
+    overflow: hidden; 
+    position: relative;
 }
 
 /* Header Navbar Layout Configuration */
 .topNav {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Dynamic splitting pushes controls to borders */
+    justify-content: space-between; 
     background-color: var(--evergreen);
     padding: 10px 16px;
     height: 65px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     z-index: 10;
+    
+    /* CRITICAL: Prevents the header from compressing */
+    flex-shrink: 0; 
 }
 
 .navLeft {
     display: flex;
     align-items: center;
     gap: 12px;
-    min-width: 0; /* Ensures truncation works flawlessly if friend names stretch */
+    min-width: 0; 
 }
 
 .backBtn {
@@ -126,12 +139,13 @@
     gap: 10px;
     background: radial-gradient(circle, rgba(49,87,44,0.15) 0%, rgba(26,26,26,1) 100%);
     
-    /* REMOVES VISUAL SCROLLBAR WHILE PRESERVING TOUCH/WHEEL SCROLL FUNCTIONALITY */
-    scrollbar-width: none; /* Firefox layout configuration rules */
-    -ms-overflow-style: none; /* Internet Explorer & Edge legacy rule engine */
+    /* Smooth elastic touch velocity response parameters for iOS environments */
+    -webkit-overflow-scrolling: touch; 
+    
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
 }
 
-/* Removals engine targeting Webkit engine architectures (Chrome, Safari, Opera) */
 .messageFeed::-webkit-scrollbar {
     display: none;
 }
@@ -170,6 +184,9 @@
     padding: 12px 16px;
     background-color: #141414;
     gap: 12px;
+    
+    /* CRITICAL: Prevents the input container bar from compressing */
+    flex-shrink: 0; 
 }
 
 .messageInput {
@@ -202,6 +219,7 @@
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+    flex-shrink: 0;
 }
 
 .sendBtn:hover {
