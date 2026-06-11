@@ -62,16 +62,25 @@ async function handleUserSignUp(req, res) {
 }
 
 async function connectionReqHandling(req, res) {
-    const data = req.body;
-    const { receiver } = data;
-    const usertoken = req.cookies.uid;
-    const userData = getUser(usertoken);
-    const userId = userData.userName;
-
-    const user = await User.findOne({ userName: userId });
-    const receiverData = await User.findOne({ userName: receiver });
-
     try {
+        const data = req.body;
+        const { receiver } = data;
+        const usertoken = req.cookies.uid;
+        const userData = getUser(usertoken);
+        console.log("token:", usertoken);
+        console.log("userData:", userData);
+        console.log("receiver:", receiver);
+        if (!userData) {
+            return res.status(401).json({
+                message: "Invalid token"
+            });
+        }
+        const userId = userData.userName;
+
+        const user = await User.findOne({ userName: userId });
+        const receiverData = await User.findOne({ userName: receiver });
+
+
         if (!user || !receiverData) {
             return res.status(404).json({
                 message: "User not found"
@@ -92,16 +101,17 @@ async function connectionReqHandling(req, res) {
                 await receiverData.save();
 
                 //Storing ChatID
-                chatID = getChatId(userId, receiver);
+                const chatID = getChatId(userId, receiver);
                 const msgRes = await MSG.create({
-                    chat_id:chatID,
-                    chatData:[
-                    {
-                        from:userId,
-                        to:receiver,
-                        msg:"Connected to you",                    
-                    }
-                ]});
+                    chat_id: chatID,
+                    chatData: [
+                        {
+                            from: userId,
+                            to: receiver,
+                            msg: "Connected to you",
+                        }
+                    ]
+                });
 
                 return res.status(200).json({
                     message: "Connection created"
@@ -114,7 +124,7 @@ async function connectionReqHandling(req, res) {
             }
         }
     } catch (error) {
-        console.error(error);
+        console.log(error);
         return res.status(500).json({
             message: "Server error"
         });
