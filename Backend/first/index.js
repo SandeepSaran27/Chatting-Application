@@ -85,6 +85,7 @@ io.on('connection', (socket) => {
 
         //io.to(receiverId).emit("updatenotification");
         io.to(receiverSocketId).emit("updatenotification");
+        console.log("senderSocketId", senderSocketId);
         io.to(senderSocketId).emit("receivemessage", msgResponse);
         if (receiverSocketId) {
             io.to(receiverSocketId).emit("receivemessage", msgResponse);
