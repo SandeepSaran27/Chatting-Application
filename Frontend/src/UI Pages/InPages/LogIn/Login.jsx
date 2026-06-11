@@ -34,14 +34,14 @@ function LogIn() {
             const data = await res.json();
             //console.log("data", data.userData);
             const userIdToken = document.cookie.slice(4);
-            const res = await fetch(
+            const res2 = await fetch(
                 `${BACKEND_SERVER_URL}user/getUserData`,
                 {
                     credentials: "include",
                 }
             );
-            const data = await res.json();
-            const userId = data.data.userName;
+            const data2 = await res2.json();
+            const userId = data2.data.userName;
             socket.emit("updateOnlineStatus", userId);   
             navigate('/home');
         }
