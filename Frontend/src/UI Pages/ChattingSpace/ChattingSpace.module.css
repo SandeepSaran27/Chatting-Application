@@ -21,22 +21,25 @@ body,
 }
 
 .chatContainer {
-    width: 100%;
-    height: 100vh;
-    height: 100dvh;
+    position: fixed;
+    inset: 0;
+
     display: flex;
     flex-direction: column;
+
     background-color: #1a1a1a;
     font-family: 'Inter', sans-serif;
+
     overflow: hidden;
 }
 
-/* =======================
-   TOP NAVBAR
-======================= */
+/* ===========================
+   TOP NAVIGATION BAR
+=========================== */
 
 .topNav {
     flex-shrink: 0;
+
     height: 65px;
 
     display: flex;
@@ -47,7 +50,8 @@ body,
 
     background-color: var(--evergreen);
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+
     z-index: 100;
 }
 
@@ -61,48 +65,55 @@ body,
 .backBtn {
     background: transparent;
     border: none;
+
     color: var(--lime-cream);
-    cursor: pointer;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    cursor: pointer;
+
     padding: 4px;
+
     border-radius: 50%;
 
     transition: 0.2s;
 }
 
 .backBtn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.1);
 }
 
 .friendAvatar {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
 
     border-radius: 50%;
 
-    background: var(--palm-leaf);
+    background-color: var(--palm-leaf);
     color: var(--evergreen);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+
+    flex-shrink: 0;
 }
 
 .metaData {
     display: flex;
     flex-direction: column;
+
     min-width: 0;
 }
 
 .friendName {
     color: white;
+
     font-size: 1rem;
     font-weight: 700;
 
@@ -113,8 +124,10 @@ body,
 
 .descriptionText {
     color: var(--lime-cream);
-    opacity: 0.85;
+
     font-size: 0.8rem;
+
+    opacity: 0.9;
 
     white-space: nowrap;
     overflow: hidden;
@@ -124,27 +137,29 @@ body,
 .menuBtn {
     background: transparent;
     border: none;
-    color: var(--lime-cream);
 
-    cursor: pointer;
+    color: var(--lime-cream);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    cursor: pointer;
+
     padding: 6px;
+
     border-radius: 50%;
 
     transition: 0.2s;
 }
 
 .menuBtn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.1);
 }
 
-/* =======================
-   MESSAGE AREA
-======================= */
+/* ===========================
+   MESSAGE SECTION
+=========================== */
 
 .messageFeed {
     flex: 1;
@@ -154,15 +169,17 @@ body,
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
+
+    gap: 12px;
 
     padding: 20px;
 
-    background: radial-gradient(
-        circle,
-        rgba(49, 87, 44, 0.15) 0%,
-        rgba(26, 26, 26, 1) 100%
-    );
+    background:
+        radial-gradient(
+            circle,
+            rgba(49,87,44,0.12) 0%,
+            rgba(26,26,26,1) 100%
+        );
 
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -186,16 +203,16 @@ body,
 }
 
 .bubble {
-    max-width: 70%;
+    max-width: 75%;
 
-    padding: 10px 14px;
+    padding: 12px 16px;
 
     font-size: 0.95rem;
     line-height: 1.4;
 
     word-break: break-word;
 
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
 }
 
 .incoming {
@@ -212,34 +229,37 @@ body,
     border-radius: 16px 0 16px 16px;
 }
 
-/* =======================
+/* ===========================
    INPUT BAR
-======================= */
+=========================== */
 
 .inputBar {
     flex-shrink: 0;
 
     display: flex;
     align-items: center;
+
     gap: 12px;
 
     padding: 12px 16px;
 
     background: #141414;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .messageInput {
     flex: 1;
 
     background: #262626;
-    color: white;
 
     border: 1px solid transparent;
-    border-radius: 24px;
 
-    padding: 12px 20px;
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 24px;
 
     font-size: 0.95rem;
 
@@ -249,25 +269,27 @@ body,
 }
 
 .messageInput:focus {
-    border-color: var(--fern);
     background: #2d2d2d;
+    border-color: var(--fern);
 }
 
 .sendBtn {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
 
     border: none;
+
     border-radius: 50%;
 
     background: var(--fern);
-    color: var(--lime-cream);
 
-    cursor: pointer;
+    color: var(--lime-cream);
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    cursor: pointer;
 
     transition: 0.2s;
 }
@@ -277,30 +299,33 @@ body,
     color: var(--evergreen);
 }
 
-/* =======================
+/* ===========================
    MOBILE
-======================= */
+=========================== */
 
 @media (max-width: 768px) {
+
     .topNav {
         height: 60px;
         padding: 8px 12px;
     }
 
     .friendAvatar {
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
     }
 
     .bubble {
         max-width: 85%;
+        font-size: 0.9rem;
     }
 
     .inputBar {
         padding: 10px 12px;
     }
 
-    .messageInput {
-        padding: 10px 16px;
+    .sendBtn {
+        width: 44px;
+        height: 44px;
     }
 }
