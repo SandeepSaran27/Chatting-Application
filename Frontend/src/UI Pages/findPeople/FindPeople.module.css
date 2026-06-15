@@ -16,8 +16,39 @@ html,
 body,
 #root {
     width: 100%;
+    /* 1. Change min-height to height on the base layout to trap container sizing if needed, 
+       or let body handle the overflow natively. */
     min-height: 100vh;
-    /*overflow-x: hidden;*/
+}
+
+body {
+    background: var(--lime-cream);
+    font-family: 'Inter', sans-serif;
+    /* 2. Standardize native scrolling on the body instead of styling multi-layers */
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
+.pageWrapper {
+    width: 100%;
+    min-height: 100vh;
+
+    background: var(--lime-cream);
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 24px 16px;
+
+    /* 3. REMOVE overflow-y: auto from here. 
+       Letting the parent (body) handle the scrolling prevents double-scrollbars. */
+}
+/*
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100vh;
     overflow-y: auto;
 }
 
@@ -39,7 +70,7 @@ body {
 
     overflow-y: auto;
 }
-
+*/
 .mainHeader {
     display: flex;
     justify-content: space-between;
