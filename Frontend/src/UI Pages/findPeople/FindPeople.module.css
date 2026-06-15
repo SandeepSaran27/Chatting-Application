@@ -16,6 +16,323 @@ html,
 body,
 #root {
     width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    background: var(--lime-cream);
+    font-family: 'Inter', sans-serif;
+}
+
+.pageWrapper {
+    width: 100%;
+    min-height: 100vh;
+
+    background: var(--lime-cream);
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 24px 16px;
+
+    overflow-y: auto;
+}
+
+.mainHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 24px;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.homeButton,
+.viewFriendsButton {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    text-decoration: none;
+
+    transition: 0.25s;
+}
+
+.homeButton {
+    background: var(--fern);
+}
+
+.viewFriendsButton {
+    background: var(--hunter-green);
+}
+
+.title {
+    color: var(--evergreen);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.heroSection {
+    background: linear-gradient(
+        135deg,
+        var(--evergreen),
+        var(--hunter-green)
+    );
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 24px;
+}
+
+.heroTitle {
+    font-size: 2rem;
+    font-weight: 800;
+
+    margin-bottom: 8px;
+}
+
+.heroText {
+    opacity: 0.9;
+}
+
+.heroBadge {
+    width: 80px;
+    height: 80px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.searchBox {
+    margin-bottom: 24px;
+}
+
+.searchInput {
+    width: 100%;
+
+    padding: 16px 20px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 18px;
+
+    background: white;
+
+    font-size: 1rem;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.peopleGrid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(250px, 1fr));
+
+    gap: 24px;
+
+    width: 100%;
+}
+
+.personCard {
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 24px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    transition: 0.25s;
+}
+
+.personCard:hover {
+    transform: translateY(-4px);
+}
+
+.cardTop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 16px;
+
+    position: relative;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--palm-leaf),
+        var(--fern)
+    );
+
+    color: white;
+
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.onlineDot {
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    position: absolute;
+    right: calc(50% - 40px);
+    bottom: 4px;
+
+    border: 2px solid white;
+}
+
+.personName {
+    color: var(--evergreen);
+
+    font-size: 1.1rem;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+.personTag {
+    color: var(--fern);
+
+    margin-bottom: 20px;
+}
+
+.connectBtn {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: var(--hunter-green);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    transition: 0.25s;
+}
+
+.connectBtn:hover {
+    background: var(--fern);
+}
+
+@media (max-width: 768px) {
+    .heroSection {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .heroBadge {
+        width: 70px;
+        height: 70px;
+    }
+
+    .peopleGrid {
+        grid-template-columns:
+            repeat(auto-fill, minmax(220px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .pageWrapper {
+        padding: 16px;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .heroTitle {
+        font-size: 1.4rem;
+    }
+
+    .peopleGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .avatar {
+        width: 70px;
+        height: 70px;
+    }
+
+    .homeButton,
+    .viewFriendsButton {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/*:root {
+    --evergreen: #132a13ff;
+    --hunter-green: #31572cff;
+    --fern: #4f772dff;
+    --palm-leaf: #90a955ff;
+    --lime-cream: #ecf39eff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
     min-height: 100%;
     overflow-x: hidden;
 }
@@ -36,7 +353,7 @@ body {
 
     padding: 24px 16px;
 
-    /*overflow-y: auto;*/
+    
 }
 
 .mainHeader {
@@ -295,3 +612,4 @@ body {
         height: 42px;
     }
 }
+*/
