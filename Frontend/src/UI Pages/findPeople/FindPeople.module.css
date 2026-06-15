@@ -12,26 +12,32 @@
     box-sizing: border-box;
 }
 
-html,
-body,
-#root {
+html {
+    /* Prevents horizontal scroll globally and ensures smooth scrolling */
+    overflow-x: hidden;
     width: 100%;
-    /* 1. Change min-height to height on the base layout to trap container sizing if needed, 
-       or let body handle the overflow natively. */
-    min-height: 100vh;
 }
 
 body {
     background: var(--lime-cream);
     font-family: 'Inter', sans-serif;
-    /* 2. Standardize native scrolling on the body instead of styling multi-layers */
-    overflow-y: auto; 
+    width: 100%;
+    /* Use min-block-size or dynamic viewport height to prevent mobile browser address bar bugs */
+    min-height: 100dvh; 
+    
+    /* Only allow vertical scrolling at the top-most level */
+    overflow-y: auto;
     overflow-x: hidden;
+}
+
+#root {
+    width: 100%;
 }
 
 .pageWrapper {
     width: 100%;
-    min-height: 100vh;
+    /* Let it expand naturally; min-height is already enforced on the body */
+    min-height: 100%; 
 
     background: var(--lime-cream);
 
@@ -39,11 +45,24 @@ body {
     flex-direction: column;
 
     padding: 24px 16px;
-
-    /* 3. REMOVE overflow-y: auto from here. 
-       Letting the parent (body) handle the scrolling prevents double-scrollbars. */
+    
+    /* ABSOLUTELY NO overflow properties here */
 }
-/*
+
+/*:root {
+    --evergreen: #132a13ff;
+    --hunter-green: #31572cff;
+    --fern: #4f772dff;
+    --palm-leaf: #90a955ff;
+    --lime-cream: #ecf39eff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html,
 body,
 #root {
